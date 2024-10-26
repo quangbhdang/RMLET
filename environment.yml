@@ -1,0 +1,8 @@
+name: project_env
+channels:
+  - defaults
+dependencies:
+  - numpy
+  - pandas
+  - scikit-learn
+  - seaborn
