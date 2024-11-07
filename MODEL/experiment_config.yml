@@ -1,0 +1,13 @@
+models:
+
+  model_1:
+    name: Linear Regression
+    parameters: 
+      alpha: 1, 2, 4
+      beta: range[1,6]
+
+  model_2:
+    name: Polynominal Regression
+    parameters:
+      poly: 1,2,3
+      

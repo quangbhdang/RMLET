@@ -1,0 +1,4 @@
+# Ignore local virtual environment directories
+data_science_env/
+env/
+.env/

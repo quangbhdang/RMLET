@@ -1,5 +1,0 @@
-model: Linear Regression
-parameters: 
-  - alpha: 1, 2, 4
-  - beta: range[1,6]
-  
