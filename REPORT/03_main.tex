@@ -1,0 +1,193 @@
+%------------------
+% Document preamp
+%------------------
+\documentclass[12pt, a4paper]{article}
+\usepackage[english]{babel} % Set the language
+\usepackage{graphicx} % Allow for graphic and image insert
+\usepackage[runin]{abstract} % Add customisation for abstract
+\usepackage{csquotes} % It help with the quotes
+\usepackage{amsmath, amsthm, amsfonts} % Math package to create beautiful math equation
+\usepackage{pgfplots} % Graph creation
+\pgfplotsset{compat=1.17, width=10cm} % Set the graph to be compact
+
+\usepackage{multirow} % Set multiple row table
+\usepackage{xcolor} % text color package
+\usepackage{soul} % package for Strikethrough
+\usepackage{hyperref}
+
+
+%--------------------------------
+% Custom command for writing
+\newtheorem{hyp}{Hypothesis} % Hypothesis short hand
+\newtheorem{que}{Question} % Question short hand
+
+\usepackage[backend=biber, style=apa]{biblatex} % Use biblatex for our document
+\addbibresource{reference.bib} % Where the reference file should be 
+%--------------------------------
+% Command for citation
+% - \cite: For standard bare citation without any parentheses
+% - \parencite: Encapsulate cite in parenthesis
+% - \textcite: Replace subject of sentence
+% - Use [prenote][postnote] to add note before and after citation
+%--------------------------------
+
+%------------------
+\newcommand{\GD}[1]{\textcolor{orange}{#1}} %color code for GD comments
+%\GD{\textit{}}
+%------------------
+
+%------------------
+\usepackage{listings} % For code listing
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\renewcommand{\lstlistingname}{Code snippet}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+\lstset{style=mystyle}
+
+% Draft title if you want to use simple title
+\title{Report draft A2}
+\author{author name}
+
+\begin{document}
+
+% Uncomment the following to create a simple title 
+%\maketitle
+
+% Otherwise, I would suggest using the complex title as it gives you more customisation
+\input{01_title}
+\input{02_abstract}
+
+% Add table of contents if required.
+%\tableofcontents
+
+\section{Introduction}
+
+Before starting the document ensure that on the menu option for Overleaf, you are using Xelatex as the engine for this document.
+
+To add reference use \textbf{\texttt{\textbackslash parencite\{\}}} to add \parencite{overleaf2024}. If you want to use your reference as a continuous part of the sentence \textcite{overleaf2024} suggest using \textbf{\texttt{\textbackslash textcite\{\}}} command to do so.
+
+Your reference file must be inside the reference.bib following the Biblatex or Bibtex format for you to be able to cite them. You can either manually create these files or create them using a library citation tool or citation management tool such as Zotero, Endnote or Medeley. 
+
+\section{Research Question}
+Use \textbf{\texttt{\textbackslash begin\{hype\}}} and  \textbf{\texttt{\textbackslash end\{hype\}}} to create a hypothesis that you can continue to keep track. You can do the same to create a research question using {que}
+
+\begin{hyp}
+    This is a hypothesis
+\end{hyp}
+
+\begin{que}
+    What is your question?
+\end{que}
+
+\section{Body}
+
+Feel free to include things like important code you use during your work in the body or appendix section using \textbf{lstlisting}.
+
+\begin{lstlisting}[caption=This is a code, language=Python, label=my code]
+def custom_function():
+    print('This is a Python function')
+\end{lstlisting}
+
+Or graphic using the command \textbf{figure} or you can just copy and paste the image directly into the document to include them. Ensure to properly manage their location so you can easily find and look at them.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{graphs/demo_graph.png}
+    \caption{Enter Caption}
+    \label{fig:enter-label}
+\end{figure}
+
+Use \$ to quickly add math symbols in your text like this $R^2$. Or you can create a beautiful-looking formula which is the core of \LaTeX
+
+\[
+R^2 = \delta^2
+\]
+
+Where: 
+
+\begin{itemize}
+    \item $R^2$ is the square of the correlation coefficient of a model
+    \item $\delta$ is the correlation correlation coefficient
+\end{itemize}
+
+\section{Result}
+
+A table is very commonly used to illustrate your results. Use [h!] if you wished to ensure your tables don't float to a different location than where you place them. However, in \LaTeX it is typically done automatically to ensure that your document looks as beautiful as possible. You can see the Plain table in \ref{tab:plan_table} are very plain and is not beautiful to look at.
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{ccc}
+        No & Result & Note \\
+        1 & Great & Some note\\
+    \end{tabular}
+    \caption{This is a plain table}
+    \label{tab:plan_table}
+\end{table}
+
+We can add some borders to help make it easier to read.
+
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|c|c|c|} \hline 
+        No & Result & Note \\ \hline 
+        1 & Great & Some note\\ \hline
+    \end{tabular}
+    \caption{This is a plain table with a border}
+    \label{tab:plan_table_border}
+\end{table}
+If you wish to create a complicated table but you are not very comfortable with latex directly you can use the Visual Editor mode in Overleaf or \href{https://www.tablesgenerator.com/}{Create LaTeX tables online – TablesGenerator.com}  online editor to help you craft great great-looking table.
+
+% Please add the following required packages to your document preamble:
+% \usepackage{multirow}
+% \usepackage{graphicx}
+\begin{table}[]
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{l|lllll}
+\textbf{Researchers} & \textbf{Select Model} & \textbf{RMSE} & \textbf{MEA} & \textbf{$R^2$} & \textbf{MAPE} \\ \hline
+\multirow{8}{*}{Our team} & \textit{L} & 84.86 & 44.61 & 0.08 & 0.46 \\
+ & \textit{\textbf{R}} & \textbf{82.89} & \textbf{43.74} & \textbf{0.13} & \textbf{0.44} \\
+ & \textit{EN} & 87.72 & 54.92 & 0.02 & 0.67 \\
+ & \textit{MLP} & 85.82 & 46.13 & 0.06 & 0.44 \\
+ & \textit{SVR} & 105.35 & 67.12 & -0.41 & 0.69 \\
+ & \textit{HGB} & 86.94 & 52.42 & 0.04 & 0.59 \\
+ & AdaB & 105.18 & 87.27 & -0.04 & 1.19 \\
+ & Bag & 158.89 & 138.66 & -2.21 & 2.01 \\ \hline
+\multirow{4}{*}{Other team}& LM & 93.18 & 51.97 & 0.16 & 0.59 \\
+ & SVM Radial & 70.74 & 31.36 & 0.52 & 0.29 \\
+ & \textbf{GBM} & \textbf{66.65} & \textbf{35.22} & \textbf{0.57} & \textbf{0.38} \\
+ & RF & 68.48 & 31.85 & 0.54 & 0.31
+\end{tabular}%
+}
+\caption{A example of a complex table for a machine learning result comparison}
+\label{tab:independent-comparison}
+\end{table}
+
+\section{Conclusion}
+As you can see with \LaTeX and OverLeaf you can craft very professional-looking documents and papers for your assignment report or document. The idea is to focus on your writing and less on your formatting.  Please feel free to experiment and use this as you need for your own writing. 
+
+\printbibliography[title = Reference]
+
+\end{document}

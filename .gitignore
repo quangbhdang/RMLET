@@ -2,3 +2,15 @@
 data_science_env/
 env/
 .env/
+venv/
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+# Ignore Python bytecode files
+__pycache__/
+# Ignore Python cache files
+*.pyc
+# Ignore log files
+*.log
+
+# Ignore build
+oryx-build-commands.txt
