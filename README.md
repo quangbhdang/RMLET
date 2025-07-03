@@ -33,7 +33,7 @@ conda init
 conda env create -f environment.yml
 conda activate myenv
 ```
-Install additional packages as needed. When finished, deactivate with `conda deactivate`.
+Install additional packages as needed. When finished, deactivate with `conda deactivate`. You can change the name of the environment by modify the name of the environment inside the envrionment.yml instead the default one.
 
 ## PROJECT OVERVIEW
 
@@ -212,5 +212,7 @@ flowchart TD
 
 Adjust the timeline as needed for longer or more complex projects. This workflow ensures clear collaboration, reproducibility, and easy tracking of experiments and results.
 
-**Tip:** Test the environment early with sample data/code to ensure all team members can run the project.
+**Tip 1:** Test the environment early with sample data/code to ensure all team members can run the project. This make a wold different when dealing with massive dataset or audio, visual datasets.
+
+**Tip 2:** It a good idea to create a [Makefile](https://makefiletutorial.com/) that combine all script into a single command in CLI for simpler and consistent process when working with more complex project or multiple tools.
 
