@@ -151,27 +151,66 @@ flowchart TD
 ```
 
 **How this works:**
-- The project starts with environment setup and Git initialization.
-- Team members are assigned roles (e.g., data wrangler, model developer, experiment tracker).
-- Use notebooks for EDA and visualization; keep main code in `src/`.
-- All code and notebooks are versioned with Git. Use Git tags to mark important experiment milestones.
-- Track experiments and artifacts (metrics, models) using MLflow or similar tools.
-- Team members review and merge changes via pull requests.
-- Final results are documented in a single notebook; exploratory work stays in separate notebooks to avoid conflicts.
-- Share results and artifacts with the team using Git, MLflow, or cloud storage.
 
-**Example with 3-5 Group Members:**
-- Assign roles such as:
-  - Data Engineer: Prepares and documents datasets.
-  - Model Developer: Implements and tunes models in `src/`.
-  - Experiment Tracker: Sets up and manages MLflow for experiment tracking.
-  - Reviewer: Reviews code and notebooks before merging.
-- Each member works on their branch, pushing changes to Git.
-- Use Git tags to label experiment versions (e.g., `v1.0-baseline`, `v2.0-tuned`).
-- MLflow is used to log experiment parameters, results, and artifacts, making it easy to compare runs and reproduce results.
-- Regularly merge changes and update the final results notebook.
+1. **Set Up Environment & Git Repository**
+    - All members install dependencies and initialize the Git repo.
+    - **Output:** `environment.yml`, `.gitignore`, initial commit (YAML, text files)
+    - **Timeline:** Week 1
 
-This workflow ensures clear collaboration, reproducibility, and easy tracking of experiments and results.
+2. **Assign Team Roles & Define Timelines**
+    - Roles are assigned (see below), and project milestones are set.
+    - **Output:** `README.md` update, project plan (Markdown)
+    - **Timeline:** Week 1
+
+3. **Data Exploration & EDA**
+    - Data Engineer leads EDA in notebooks; team discusses findings.
+    - **Output:** EDA notebook(s) (Jupyter Notebook, `.ipynb`), data schema (Markdown/CSV)
+    - **Timeline:** Weeks 1–2
+
+4. **Develop Modular Code in `src/`**
+    - Model Developer implements scripts for preprocessing, modeling, etc.
+    - **Output:** Python scripts in `src/` (Python, `.py`)
+    - **Timeline:** Weeks 2–3
+
+5. **Set Up Experiment Tracking**
+    - Experiment Tracker configures MLflow or similar tools.
+    - **Output:** MLflow configs, experiment logs (YAML, JSON, MLflow UI)
+    - **Timeline:** Weeks 2–3
+
+6. **Train & Test Models**
+    - Model Developer and Data Engineer run experiments, log results.
+    - **Output:** Model checkpoints (`.pt`, `.h5`), metrics (CSV/JSON), logs
+    - **Timeline:** Weeks 3–4
+
+7. **Review & Merge Changes**
+    - Reviewer checks code, notebooks, and experiment logs via pull requests.
+    - **Output:** PR comments, merged branches (Markdown, Git)
+    - **Timeline:** Ongoing (Weeks 3–4)
+
+8. **Document Final Results**
+    - Team compiles a summary notebook and prepares the report.
+    - **Output:** Final notebook (`.ipynb`), report (`.tex`/PDF), figures (PNG/SVG)
+    - **Timeline:** Weeks 4–5
+
+9. **Share Results & Artifacts**
+    - Results are shared via Git, MLflow, or cloud storage.
+    - **Output:** Shared links, exported artifacts (Markdown, links, files)
+    - **Timeline:** Week 5
+
+**Example Roles & Outputs:**
+- **Data Engineer:** EDA notebooks (`.ipynb`), data schema (`.md`/`.csv`)
+- **Model Developer:** Python scripts (`src/`), model weights (`model/weights/`)
+- **Experiment Tracker:** MLflow setup/configs (`mlruns/`, YAML/JSON), experiment logs
+- **Reviewer:** PR reviews/comments (Markdown, GitHub UI)
+- **Report Writer:** Final notebook (`notebooks/`), LaTeX report (`report/`)
+
+**Rough Timeline:**  
+- **Week 1:** Setup, team roles, initial EDA  
+- **Weeks 2–3:** EDA, code development, experiment tracking  
+- **Weeks 3–4:** Modeling, training, review  
+- **Weeks 4–5:** Documentation, reporting, sharing results
+
+Adjust the timeline as needed for longer or more complex projects. This workflow ensures clear collaboration, reproducibility, and easy tracking of experiments and results.
 
 **Tip:** Test the environment early with sample data/code to ensure all team members can run the project.
 
