@@ -3,7 +3,8 @@ This template provides a flexible environment for machine learning and deep lear
 
 **Contents:**
 1. [Quick Setup Guide](#quick-guide)
-2. [Project Overview](#the-rant-about-the-project)
+2. [Template Overview](#template-overview)
+3. [Tips](#tips)
 
 ## QUICK-GUIDE
 
@@ -35,7 +36,7 @@ conda activate myenv
 ```
 Install additional packages as needed. When finished, deactivate with `conda deactivate`. You can change the name of the environment by modify the name of the environment inside the envrionment.yml instead the default one.
 
-## PROJECT OVERVIEW
+## TEMPLATE OVERVIEW
 
 ### Goals
 - Provide a ready-to-use ML/AI project structure.
@@ -53,7 +54,7 @@ Install additional packages as needed. When finished, deactivate with `conda dea
 All packages are managed via `environment.yml`. Add more as needed.
 
 **Recommended tools for advanced projects:**
-- [DagsHub](https://dagshub.com/) / [Weights & Biases](https://wandb.ai/site) for experiment tracking.
+- [MLFlow](https://mlflow.org/docs/latest/) (or [DagsHub](https://dagshub.com/) which host a MLflow server even on freetier) / [Weights & Biases](https://wandb.ai/site) for experiment tracking.
 - [DVC](https://dvc.org/) for data/model versioning.
 - [LaTeX](https://www.latex-project.org/) (or [Overleaf](https://www.overleaf.com/)) for reports.
 
@@ -189,7 +190,8 @@ flowchart TD
 
 8. **Document Final Results**
     - Team compiles a summary notebook and prepares the report.
-    - **Output:** Final notebook (`.ipynb`), report (`.tex`/PDF), figures (PNG/SVG)
+    - **Output:** Final notebook (`.ipynb`), report (`.tex`/PDF), figures (PNG/SVG/PDF)
+   > If you are using the figure for your latex document it better to use PDF as latex can use PDF to render higher quality figure for your report.
     - **Timeline:** Weeks 4–5
 
 9. **Share Results & Artifacts**
@@ -212,12 +214,20 @@ flowchart TD
 
 Adjust the timeline as needed for longer or more complex projects. This workflow ensures clear collaboration, reproducibility, and easy tracking of experiments and results.
 
-**Tip 1:** Test the environment early with sample data/code to ensure all team members can run the project. This make a wold different when dealing with massive dataset or audio, visual datasets.
+## TIPS
+
+**Tip 1:** Test the environment early with sample data/code to ensure all team members can run the project. This make a different when dealing with massive dataset or audio, visual datasets. A small sample of 100 is plenty for most tasks.
 
 **Tip 2:** It a good idea to create a [Makefile](https://makefiletutorial.com/) that combine all script into a single command in CLI for simpler and consistent process when working with more complex project or multiple tools.
 
+> NOTE: Makefile help to reduce the chance for someone to mistakenly run a old pipeline or wrong config of mini services on their system. Instead of typing something like `mlflow server --backend-store-uri sqlite:///mlflow.db --default-artifact-root ./artifacts --host 0.0.0.0 --app-name basic-auth`, you can just type `make mlflow-auth-start`.
+
 **Tip 3:** For long running session a push notification tool is extremly helpful to allow for your to check on your code running status without having to physically be on your notebook or script. [Ntfy](https://docs.ntfy.sh/), have a self-host version, or [Pushover](https://pushover.net/), os license one-time payment, are two option I highly recommend.
 
-**Tip 4:** You can turn your home pc into a Colab like server using [Tailscale](https://tailscale.com/) plus a remote desktop program like [Rustdesk](https://rustdesk.com/). Tailscale streamline you VPN setting allow you to easily securly serve our MLFlow, or Jupyter Lab without exposing our network in a unsecure manner. Rustdesk help you run these service remotely without worry about SSH session timeout. 
+**Tip 4:** You can turn your desktop into a Colab like server using [Tailscale](https://tailscale.com/) plus a remote desktop program like [Rustdesk](https://rustdesk.com/). Tailscale streamline you VPN setting allow you to easily securly serve our MLFlow, or Jupyter Lab without exposing our network in a unsecure manner. Rustdesk help you run these service remotely without worry about SSH session timeout. 
 
-**Tip 5:** Use Tailscale serve (Funnel) option to open up your MLflow server for remote tracking. You should secure MLflow server using basic authentication, beta support as current speaking, or custom authentication prior to do this. But in exchange you can now switch between different machine or VM instance with more powerful GPU while still having the run output store directly on your system. WARNING: do ensure you have data backup solution on your machine as you don't have the benefit of cloud or enterprise level backup on local machine.
+> WARNING: Home server also mean you will be responsible for your own up time. Thus, alway run your script defensively (constant saving, checkpoints etc) like when you running on Colab. You can reduce the down time by adding UPS for your network and computing devices but this will add a upfront cost. Cheap alternative is using a laptop since it have it own battery pack and GPU but this mean exchanging for lower computing power (Laptop GPU is weaker than it desktop version). Proceed with these issues in mind.
+
+**Tip 5:** Use Tailscale serve (Funnel) option to open up your MLflow server for remote tracking. You should away secure MLflow server using basic authentication, beta support as current speaking, or custom authentication prior exposing your service to the internet. But in exchange you can now switch between different machine or VM instance with more powerful GPU while still having the run output store directly on your local system. 
+
+> WARNING: Do ensure you have data backup solution on your machine as you don't have the benefit of cloud or enterprise level backup on local machine for your experiment results. Cheap way to overcome this is using some form or cloud sync on your device like OneDrive or Icloud to backup you computer to the cloud. Alternatively you can set up RAID on your system if you have multiple SSD or HDD.
