@@ -216,3 +216,8 @@ Adjust the timeline as needed for longer or more complex projects. This workflow
 
 **Tip 2:** It a good idea to create a [Makefile](https://makefiletutorial.com/) that combine all script into a single command in CLI for simpler and consistent process when working with more complex project or multiple tools.
 
+**Tip 3:** For long running session a push notification tool is extremly helpful to allow for your to check on your code running status without having to physically be on your notebook or script. [Ntfy](https://docs.ntfy.sh/), have a self-host version, or [Pushover](https://pushover.net/), os license one-time payment, are two option I highly recommend.
+
+**Tip 4:** You can turn your home pc into a Colab like server using [Tailscale](https://tailscale.com/) plus a remote desktop program like [Rustdesk](https://rustdesk.com/). Tailscale streamline you VPN setting allow you to easily securly serve our MLFlow, or Jupyter Lab without exposing our network in a unsecure manner. Rustdesk help you run these service remotely without worry about SSH session timeout. 
+
+**Tip 5:** Use Tailscale serve (Funnel) option to open up your MLflow server for remote tracking. You should secure MLflow server using basic authentication, beta support as current speaking, or custom authentication prior to do this. But in exchange you can now switch between different machine or VM instance with more powerful GPU while still having the run output store directly on your system. WARNING: do ensure you have data backup solution on your machine as you don't have the benefit of cloud or enterprise level backup on local machine.
